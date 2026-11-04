@@ -1,0 +1,23 @@
+name: Validar proyecto
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'feature/**'
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validar estructura
+        id: validar
+        uses: ./.github/actions/validar-aulareserva
+        with:
+          rutas: >-
+            README.md
+            frontend/index.html
+            frontend/app.js
+            backend/public/index.php
+      - name: Mostrar resultado
+        run: echo "Rutas verificadas = ${{ steps.validar.outputs.total }}"

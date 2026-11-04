@@ -1,0 +1,29 @@
+name: Validar AulaReserva
+description: Comprueba que existen las rutas indicadas y devuelve cuántas se han verificado
+inputs:
+  rutas:
+    description: Rutas a comprobar, separadas por espacios
+    required: true
+outputs:
+  total:
+    description: Número de rutas verificadas
+    value: ${{ steps.comprobar.outputs.total }}
+runs:
+  using: composite
+  steps:
+    - id: comprobar
+      shell: bash
+      env:
+        RUTAS: ${{ inputs.rutas }}
+      run: |
+        total=0
+        for ruta in $RUTAS; do
+          if [ -e "$ruta" ]; then
+            echo "OK: $ruta"
+            total=$((total + 1))
+          else
+            echo "::error::No existe la ruta: $ruta"
+            exit 1
+          fi
+        done
+        echo "total=$total" >> "$GITHUB_OUTPUT"
