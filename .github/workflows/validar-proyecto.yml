@@ -19,5 +19,6 @@ jobs:
             frontend/index.html
             frontend/app.js
             backend/public/index.php
+            frontend/noexiste.html
       - name: Mostrar resultado
         run: echo "Rutas verificadas = ${{ steps.validar.outputs.total }}"
