@@ -28,6 +28,31 @@
         <h2>Aulas disponibles</h2>
         <div id="aulas"></div>
     </section>
+      <section>
+    <h2>Solicitar reserva</h2>
+    <form id="form-reserva" novalidate>
+      <p>
+        <label for="aula">Aula</label><br>
+        <select id="aula" name="aula">
+          <option value="">-- Selecciona un aula --</option>
+        </select>
+      </p>
+      <p>
+        <label for="fecha">Fecha</label><br>
+        <input type="date" id="fecha" name="fecha">
+      </p>
+      <p>
+        <label for="hora">Hora</label><br>
+        <input type="time" id="hora" name="hora">
+      </p>
+      <p>
+        <label for="responsable">Responsable</label><br>
+        <input type="text" id="responsable" name="responsable">
+      </p>
+      <button type="submit">Reservar</button>
+      <p id="mensaje"></p>
+    </form>
+  </section>
     <script src="app.js"></script>
 </body>
 
