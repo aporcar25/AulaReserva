@@ -3,13 +3,20 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'feature/**'
+      - develop
+      - "feature/**"
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   validar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - name: Mostrar evento
+        run: |
+          echo "Evento: ${{ github.event_name }}"
       - name: Validar estructura
         id: validar
         uses: ./.github/actions/validar-aulareserva
@@ -20,4 +27,5 @@ jobs:
             frontend/app.js
             backend/public/index.php
       - name: Mostrar resultado
-        run: echo "Rutas verificadas = ${{ steps.validar.outputs.total }}"
+        run: |
+          echo "Rutas verificadas: ${{ steps.validar.outputs.total }}"
