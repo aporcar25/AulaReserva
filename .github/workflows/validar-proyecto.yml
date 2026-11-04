@@ -20,4 +20,4 @@ jobs:
             frontend/app.js
             backend/public/index.php
       - name: Mostrar resultado
-        run: echo "Rutas verificadas: ${{ steps.validar.outputs.total }}"
+        run: echo "Rutas verificadas = ${{ steps.validar.outputs.total }}"
