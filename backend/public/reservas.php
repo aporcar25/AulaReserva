@@ -25,7 +25,7 @@ $json = file_get_contents("php://input");
 $datos = json_decode($json, true);
 
 // Guardamos cada dato en una variable (si no existe, queda vacío)
-$aula = $datos["aula"] ?? "";
+$aula = $datos["aula"] ?? ""
 $fecha = $datos["fecha"] ?? "";
 $hora = $datos["hora"] ?? "";
 $responsable = trim($datos["responsable"] ?? "");
